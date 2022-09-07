@@ -274,7 +274,7 @@ MonoBehaviour:
   - {fileID: 105723051}
   - {fileID: 574918792}
   - {fileID: 2120932132}
-  timeBetweenWaves: 3
+  timeBetweenWaves: 5
   state: 2
 --- !u!4 &143424472 stripped
 Transform:
