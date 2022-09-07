@@ -5,11 +5,11 @@ using Pathfinding;
 
 public class EnemyAI : MonoBehaviour
 {
-    //
     public GameObject target;
 
     public float speed = 200f;
     public float nextWaypointDistance = 3f;
+    public int Life = 10;
 
     public Transform Thief;
 
@@ -88,6 +88,20 @@ public class EnemyAI : MonoBehaviour
         {
             Path = P;
             currentWaypoint = 0;
+        }
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Bullet")
+        {
+            Life--;
+
+            if (Life == 0)
+            {
+                Destroy(this.gameObject);
+                return;
+            }
         }
     }
 

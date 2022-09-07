@@ -132,7 +132,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.75
 --- !u!114 &6307243697317483943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,8 +146,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 3695205917324851174, guid: 3abcf403fd0c63340aec997f1408433d, type: 3}
-  speed: 3500
+  speed: 4000
   nextWaypointDistance: 1
+  HP: 10
   Thief: {fileID: 6307243697317483940}
 --- !u!50 &6307243697317483944
 Rigidbody2D:
