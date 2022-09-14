@@ -1,17 +1,23 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    public float Health = 100f;
-
+    [SerializeField]
+    [Range(0.01f, 10f)]
+    private float fadeTime;
 
     //Motion
     public float MovingSpeed;
     public Rigidbody2D Rigidbody;
     private Vector2 moveInput;
     private bool facingRight = true;
+    SpriteRenderer spriteRenderer;
+    Image Background;
 
     //Dash
     private float ActiveMoveSpeed;
@@ -33,6 +39,8 @@ public class Player : MonoBehaviour
         Rigidbody = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
         Ghost = GetComponent<Player_Ghost>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        Background = GetComponent<Image>();
     }
 
     void Start()
@@ -129,13 +137,44 @@ public class Player : MonoBehaviour
         transform.Rotate(0f, 180f, 0f);
     }
 
-    //public void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.tag == "Enemy")
-    //    {
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            OnDie();
+        }
+    }
 
-    //        Destroy(this.gameObject);
-    //    }
-    //}
+    public void OnDie()
+    {
+        //gameObject.layer = 13;
+        StartCoroutine(Fade1(0, 1));
+
+        Invoke("NextSceneWithNum", 4);
+    }
+
+    public void NextSceneWithNum()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+
+    private IEnumerator Fade1(float start, float end)
+    {
+        float currentTime = 0.0f;
+        float percent = 0.0f;
+
+        while (percent < 1)
+        {
+            currentTime += Time.deltaTime;
+            percent = currentTime / fadeTime;
+
+            Color color = Background.color;
+            color.a = Mathf.Lerp(start, end, percent);
+            Background.color = color;
+
+            yield return null;
+        }
+    }
 }
 

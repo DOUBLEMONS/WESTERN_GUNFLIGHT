@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Bullet
   - Ghost
+  - Invincibility
   layers:
   - Default
   - TransparentFX

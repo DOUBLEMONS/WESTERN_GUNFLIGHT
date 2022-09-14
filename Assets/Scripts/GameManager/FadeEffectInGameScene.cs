@@ -10,6 +10,7 @@ public class FadeEffectInGameScene : MonoBehaviour
     private float fadeTime;
     private Image Background;
 
+
     private void Awake()
     {
         Background = GetComponent<Image>();
@@ -38,4 +39,5 @@ public class FadeEffectInGameScene : MonoBehaviour
         }
 
     }
+
 }

@@ -62,7 +62,6 @@ public class WaveSpawner : MonoBehaviour
         {
             waveCountdown -= Time.deltaTime;
         }
-
     }
 
     void WaveCompleted()
@@ -80,7 +79,21 @@ public class WaveSpawner : MonoBehaviour
         else
         {
             nextWave++;
+            
+            if (nextWave == 5)
+            {
+                OnClear();
+            }
         }
+    }
+
+    public void OnClear()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit(); // 어플리케이션 종료
+#endif
     }
 
     bool EnemyIsAlive()

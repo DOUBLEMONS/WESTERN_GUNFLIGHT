@@ -146,9 +146,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 3695205917324851174, guid: 3abcf403fd0c63340aec997f1408433d, type: 3}
-  speed: 4000
+  speed: 2250
   nextWaypointDistance: 1
-  HP: 10
+  Life: 5
   Thief: {fileID: 6307243697317483940}
 --- !u!50 &6307243697317483944
 Rigidbody2D:
